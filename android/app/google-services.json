@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "53590807308",
+    "project_id": "candsysvoto",
+    "storage_bucket": "candsysvoto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53590807308:android:342154e1b2255671ac6f29",
+        "android_client_info": {
+          "package_name": "com.jsalab.votocerto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53590807308-0vdig3qu3k0gmabmg2c76bb4lgkv3286.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jsalab.votocerto",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "53590807308-9f90o0ih8pmlu9ecc0n3ujgant00148m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBV9MyBidkNIbtPd_xXZw-TusyG6JzvT4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53590807308-9f90o0ih8pmlu9ecc0n3ujgant00148m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,36 @@
+export '../../../flutter_flow/lat_lng.dart';
+export 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
+
+export '../supabase.dart';
+export 'row.dart';
+export 'table.dart';
+
+export 'tables/survey_questions.dart';
+export 'tables/avaliacoes_cursos.dart';
+export 'tables/aulas.dart';
+export 'tables/cadastro_social.dart';
+export 'tables/acessores.dart';
+export 'tables/apoiadores_politicos.dart';
+export 'tables/notificacoes_push.dart';
+export 'tables/orcamento.dart';
+export 'tables/survey_responses.dart';
+export 'tables/bid.dart';
+export 'tables/propostas.dart';
+export 'tables/modulos.dart';
+export 'tables/adversarios_politicos.dart';
+export 'tables/db_ativo.dart';
+export 'tables/categorias_cursos.dart';
+export 'tables/slogan_campanha.dart';
+export 'tables/cursos.dart';
+export 'tables/meus_cursos.dart';
+export 'tables/materiais_apoio.dart';
+export 'tables/surveys.dart';
+export 'tables/representantes.dart';
+export 'tables/assinaturas.dart';
+export 'tables/agenda.dart';
+export 'tables/precos.dart';
+export 'tables/instituicoes.dart';
+export 'tables/users.dart';
+export 'tables/profissoes.dart';
+export 'tables/cobrancas.dart';
+export 'tables/notifications.dart';
