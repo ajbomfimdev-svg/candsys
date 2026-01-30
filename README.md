@@ -17,6 +17,7 @@ This project reads API keys from Dart defines:
 Use the helper script:
 
 ```zsh
+cp .env.example .env
 export BREVO_API_KEY="..."
 export OPENAI_API_KEY="..."
 export STRIPE_SECRET_KEY="..."
