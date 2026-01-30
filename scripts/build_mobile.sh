@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ENV_FILE=".env"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+ENV_FILE="$ROOT_DIR/.env"
 if [[ -f "$ENV_FILE" ]]; then
   set -a
   source "$ENV_FILE"
@@ -12,8 +14,8 @@ BREVO_API_KEY=${BREVO_API_KEY:-}
 OPENAI_API_KEY=${OPENAI_API_KEY:-}
 STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
 
-if [[ -z "$BREVO_API_KEY" || -z "$OPENAI_API_KEY" || -z "$STRIPE_SECRET_KEY" ]]; then
-  echo "Missing env vars. Set BREVO_API_KEY, OPENAI_API_KEY, STRIPE_SECRET_KEY." >&2
+if [[ -z "$BREVO_API_KEY" || -z "$OPENAI_API_KEY" ]]; then
+  echo "Missing env vars. Set BREVO_API_KEY and OPENAI_API_KEY. STRIPE_SECRET_KEY is optional." >&2
   exit 1
 fi
 
@@ -24,19 +26,22 @@ DEVICE_ID=${3:-}
 DART_DEFINES=(
   "--dart-define=BREVO_API_KEY=${BREVO_API_KEY}"
   "--dart-define=OPENAI_API_KEY=${OPENAI_API_KEY}"
-  "--dart-define=STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}"
 )
+
+if [[ -n "$STRIPE_SECRET_KEY" ]]; then
+  DART_DEFINES+=("--dart-define=STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}")
+fi
 
 case "$MODE" in
   run)
     if [[ "$TARGET" == "ios" ]]; then
       if [[ -n "$DEVICE_ID" ]]; then
-        flutter run -d "$DEVICE_ID" "${DART_DEFINES[@]}"
+        (cd "$ROOT_DIR" && flutter run -d "$DEVICE_ID" "${DART_DEFINES[@]}")
       else
-        flutter run -d ios "${DART_DEFINES[@]}"
+        (cd "$ROOT_DIR" && flutter run -d ios "${DART_DEFINES[@]}")
       fi
     else
-      flutter run "${DART_DEFINES[@]}"
+      (cd "$ROOT_DIR" && flutter run "${DART_DEFINES[@]}")
     fi
     ;;
   build)
