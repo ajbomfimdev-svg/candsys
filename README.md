@@ -14,7 +14,7 @@ This project reads API keys from Dart defines:
 - `OPENAI_API_KEY`
 - `STRIPE_SECRET_KEY`
 
-Use the helper script:
+Use the helper script (it autoloads `.env` if present):
 
 ```zsh
 cp .env.example .env
