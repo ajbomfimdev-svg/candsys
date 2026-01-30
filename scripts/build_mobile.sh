@@ -19,6 +19,7 @@ fi
 
 MODE=${1:-run}
 TARGET=${2:-android}
+DEVICE_ID=${3:-}
 
 DART_DEFINES=(
   "--dart-define=BREVO_API_KEY=${BREVO_API_KEY}"
@@ -28,7 +29,15 @@ DART_DEFINES=(
 
 case "$MODE" in
   run)
-    flutter run "${DART_DEFINES[@]}"
+    if [[ "$TARGET" == "ios" ]]; then
+      if [[ -n "$DEVICE_ID" ]]; then
+        flutter run -d "$DEVICE_ID" "${DART_DEFINES[@]}"
+      else
+        flutter run -d ios "${DART_DEFINES[@]}"
+      fi
+    else
+      flutter run "${DART_DEFINES[@]}"
+    fi
     ;;
   build)
     if [[ "$TARGET" == "android" ]]; then
