@@ -12,7 +12,7 @@ This project reads API keys from Dart defines:
 
 - `BREVO_API_KEY`
 - `OPENAI_API_KEY`
-- `STRIPE_SECRET_KEY`
+- `STRIPE_SECRET_KEY` (optional)
 
 Use the helper script (it autoloads `.env` if present):
 
