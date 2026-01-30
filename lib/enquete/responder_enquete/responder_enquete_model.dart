@@ -22,23 +22,9 @@ class ResponderEnqueteModel extends FlutterFlowModel<ResponderEnqueteWidget> {
 
   int index = 0;
 
-  List<String> respAux = [];
-  void addToRespAux(String item) => respAux.add(item);
-  void removeFromRespAux(String item) => respAux.remove(item);
-  void removeAtIndexFromRespAux(int index) => respAux.removeAt(index);
-  void insertAtIndexInRespAux(int index, String item) =>
-      respAux.insert(index, item);
-  void updateRespAuxAtIndex(int index, Function(String) updateFn) =>
-      respAux[index] = updateFn(respAux[index]);
-
-  List<int> pergAux = [];
-  void addToPergAux(int item) => pergAux.add(item);
-  void removeFromPergAux(int item) => pergAux.remove(item);
-  void removeAtIndexFromPergAux(int index) => pergAux.removeAt(index);
-  void insertAtIndexInPergAux(int index, int item) =>
-      pergAux.insert(index, item);
-  void updatePergAuxAtIndex(int index, Function(int) updateFn) =>
-      pergAux[index] = updateFn(pergAux[index]);
+  Set<String> respostaChaves = {};
+  void addToRespostaChaves(String item) => respostaChaves.add(item);
+  void removeFromRespostaChaves(String item) => respostaChaves.remove(item);
 
   ///  State fields for stateful widgets in this page.
 
