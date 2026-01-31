@@ -41,8 +41,26 @@ post_install do |installer|
     flutter_additional_ios_build_settings(target)
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
       
     end
+  end
+
+  installer.aggregate_targets.each do |aggregate_target|
+    user_project = aggregate_target.user_project
+    user_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+      end
+    end
+    user_project.save
+  end
+
+  Dir.glob('Pods/Target Support Files/**/Pods-*-resources.sh').each do |script_path|
+    script = File.read(script_path)
+    patched = script.gsub('realpath -mq', "python3 -c 'import os,sys; print(os.path.realpath(sys.argv[1]))'")
+    next if script == patched
+    File.write(script_path, patched)
   end
 end
 
