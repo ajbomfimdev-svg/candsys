@@ -58,7 +58,7 @@ class _ResponderEnquetePublicaWidgetState
         id: widget.idEnquete,
       );
 
-      _model.respAux = [];
+      _model.respostaChaves = {};
       safeSetState(() {});
       _model.respostas = [];
       _model.referenciaPesquisa = random_data.randomString(
@@ -759,6 +759,8 @@ class _ResponderEnquetePublicaWidgetState
                                                                           (opIndex) {
                                                                     final opItem =
                                                                         op[opIndex];
+                                                                    final opKey =
+                                                                      '${questionsItem.id}|$opItem';
                                                                     return Row(
                                                                       mainAxisSize:
                                                                           MainAxisSize
@@ -780,11 +782,11 @@ class _ResponderEnquetePublicaWidgetState
                                                                           ),
                                                                           child:
                                                                               Checkbox(
-                                                                            value: _model.checkboxValueMap1[opItem] ??=
-                                                                                _model.respAux.contains(opItem) && _model.pergAuxID.contains(questionsItem.id),
+                                                                            value: _model.checkboxValueMap1[opKey] ??=
+                                                                                _model.respostaChaves.contains(opKey),
                                                                             onChanged:
                                                                                 (newValue) async {
-                                                                              safeSetState(() => _model.checkboxValueMap1[opItem] = newValue!);
+                                                                              safeSetState(() => _model.checkboxValueMap1[opKey] = newValue!);
                                                                               if (newValue!) {
                                                                                 _model.resp = await SurveyResponsesTable().insert({
                                                                                   'survey_id': widget.idEnquete,
@@ -794,8 +796,7 @@ class _ResponderEnquetePublicaWidgetState
                                                                                   'resposta_escolhida': opItem,
                                                                                   'pergunta': questionsItem.questionText,
                                                                                 });
-                                                                                _model.addToRespAux(opItem);
-                                                                                _model.addToPergAuxID(questionsItem.id);
+                                                                                _model.addToRespostaChaves(opKey);
                                                                                 safeSetState(() {});
 
                                                                                 safeSetState(() {});
@@ -815,8 +816,7 @@ class _ResponderEnquetePublicaWidgetState
                                                                                         opItem,
                                                                                       ),
                                                                                 );
-                                                                                _model.removeFromRespAux(opItem);
-                                                                                _model.addToPergAuxID(questionsItem.id);
+                                                                                _model.removeFromRespostaChaves(opKey);
                                                                                 safeSetState(() {});
 
                                                                                 safeSetState(() {});

@@ -26,23 +26,9 @@ class ResponderEnquetePublicaModel
 
   int index = 0;
 
-  List<String> respAux = [];
-  void addToRespAux(String item) => respAux.add(item);
-  void removeFromRespAux(String item) => respAux.remove(item);
-  void removeAtIndexFromRespAux(int index) => respAux.removeAt(index);
-  void insertAtIndexInRespAux(int index, String item) =>
-      respAux.insert(index, item);
-  void updateRespAuxAtIndex(int index, Function(String) updateFn) =>
-      respAux[index] = updateFn(respAux[index]);
-
-  List<int> pergAuxID = [];
-  void addToPergAuxID(int item) => pergAuxID.add(item);
-  void removeFromPergAuxID(int item) => pergAuxID.remove(item);
-  void removeAtIndexFromPergAuxID(int index) => pergAuxID.removeAt(index);
-  void insertAtIndexInPergAuxID(int index, int item) =>
-      pergAuxID.insert(index, item);
-  void updatePergAuxIDAtIndex(int index, Function(int) updateFn) =>
-      pergAuxID[index] = updateFn(pergAuxID[index]);
+  Set<String> respostaChaves = {};
+  void addToRespostaChaves(String item) => respostaChaves.add(item);
+  void removeFromRespostaChaves(String item) => respostaChaves.remove(item);
 
   ///  State fields for stateful widgets in this page.
 
