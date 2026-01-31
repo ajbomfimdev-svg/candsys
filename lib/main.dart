@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:clarity_flutter/clarity_flutter.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -38,20 +39,28 @@ void main() async {
     loadDataAfterLaunch: true,
   );
 
+  final clarityConfig = ClarityConfig(
+    projectId: "v9s7yxnxaz",
+    logLevel: LogLevel.None,
+  );
+
   runApp(
-    Builder(
-      builder: (context) {
-        return MediaQuery(
-          data: MediaQuery.maybeOf(context)?.copyWith(
-                textScaler: TextScaler.linear(1.0),
-              ) ??
-              const MediaQueryData(),
-          child: ChangeNotifierProvider(
-            create: (context) => appState,
-            child: MyApp(),
-          ),
-        );
-      },
+    ClarityWidget(
+      clarityConfig: clarityConfig,
+      app: Builder(
+        builder: (context) {
+          return MediaQuery(
+            data: MediaQuery.maybeOf(context)?.copyWith(
+                  textScaler: TextScaler.linear(1.0),
+                ) ??
+                const MediaQueryData(),
+            child: ChangeNotifierProvider(
+              create: (context) => appState,
+              child: MyApp(),
+            ),
+          );
+        },
+      ),
     ),
   );
 }
