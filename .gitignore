@@ -1,0 +1,20 @@
+.DS_Store
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+build/
+
+# iOS
+ios/Pods/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/Flutter.podspec
+
+# Android
+android/key.properties
+
+# Secrets
+.env
+upload-keystore.jks
+upload_certificate.pem
